@@ -51,13 +51,23 @@ if role[-1] == '\n':
 if location[-1] == '\n':
     location = location[0:-1];
 
-# Search
+time.sleep(2);
 
+# Close Messages
+messages = browser.find_elements_by_class_name('msg-overlay-bubble-header__control');
+print(len(messages));
+messages[1].click();
+
+# Search
 search_box = browser.find_elements_by_class_name('jobs-search-box__text-input');
 search_box[0].send_keys(role);
 search_box[3].send_keys(location);
 
-browser.find_element_by_class_name('msg-overlay-list-bubble__message-snippet--v2').click();
+browser.find_element_by_class_name('jobs-search-box__submit-button').click();
+
+# Filter Search
+# browser.find_element_by_class_name('peek-carousel-controls__button').click();
+# browser.find_element_by_id('ember1329').click();
 
 
 # Quit
