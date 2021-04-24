@@ -11,8 +11,8 @@ options.add_argument("--incognito");
 browser  = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options);
 browser.get('https://www.linkedin.com/');
 
-# Implicitly wait for up to 20 seconds for each element
-browser.implicitly_wait(20);
+# Implicitly wait for up to 5 seconds for each element
+browser.implicitly_wait(5);
 
 # Retrieve log in info from text file
 file = open('private.txt', 'r');
@@ -34,9 +34,10 @@ browser.find_element_by_name('session_password').send_keys(password);
 browser.find_element_by_class_name('sign-in-form__submit-button').click();
 
 # # Remember Me? -> Click Not Now
-# rmbr = browser.find_element_by_xpath('//*[@id="remember-me-prompt__form-secondary"]/button');
-# if(rmbr):
-#     rmbr.click();
+try:
+    browser.find_element_by_xpath('//*[@id="remember-me-prompt__form-secondary"]/button').click();
+except:
+    print("BOT: No Remember Me prompt.");
 
 # Click Jobs
 browser.find_element_by_xpath('//*[@id="primary-navigation"]/ul/li[3]').click();
@@ -55,7 +56,6 @@ time.sleep(2);
 
 # Close Messages
 messages = browser.find_elements_by_class_name('msg-overlay-bubble-header__control');
-print(len(messages));
 messages[1].click();
 
 # Search
@@ -66,12 +66,17 @@ search_box[3].send_keys(location);
 browser.find_element_by_class_name('jobs-search-box__submit-button').click();
 
 # Filter Search
-# browser.find_element_by_class_name('peek-carousel-controls__button').click();
-# browser.find_element_by_id('ember1329').click();
+
+# try:
+#     browser.find_element_by_xpath('//*[@id="ember1528"]');
+# except:
+#     browser.find_element_by_class_name('peek-carousel-controls__button').click();
+
+filters = browser.find_elements_by_class_name('artdeco-pill');
 
 
 # Quit
 time.sleep(5);
 file.close();
 browser.quit();
-print("quit successfully\n");
+print("BOT: Quit successfully.\n");
