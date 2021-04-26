@@ -51,8 +51,6 @@ if role[-1] == '\n':
 if location[-1] == '\n':
     location = location[0:-1];
 
-time.sleep(2);
-
 # Close Messages
 messages = browser.find_elements_by_class_name('msg-overlay-bubble-header__control');
 messages[1].click();
@@ -66,28 +64,47 @@ browser.find_element_by_class_name('jobs-search-box__submit-button').click();
 
 # Filter Search
 filters = browser.find_elements_by_class_name('artdeco-pill');
-#    0    |  Jobs               //
-#    1    |  Date Posted        
-#    2    |  Experience Level   
-#    3    |  Company            //
-#    4    |  Job Type           
-#    5    |  Remote             //
-#    6    |  Easy Apply         //
-#    7    |  All Filters        //
+##   0    |  Jobs               //
+##   1    |  Date Posted        //
+##   2    |  Experience Level   
+##   3    |  Company            //
+##   4    |  Job Type           
+##   5    |  Remote             //
+##   6    |  Easy Apply         //
+##   7    |  All Filters        //
 
-
+## Date Posted
 filters[1].click();
-time.sleep(2);
+### Past 24 Hours
 browser.find_element_by_xpath("//label[@for='timePostedRange-r86400']").click();
-time.sleep(2);
 filters[1].click();
 time.sleep(5);
 
-filters[6].click();
-
-
-# Quit
+## Experience Level
+filters = browser.find_elements_by_class_name('artdeco-pill');
+print(len(filters));
+filters[2].click();
 time.sleep(5);
-file.close();
-browser.quit();
-print("BOT: Quit successfully.\n");
+### Internship
+browser.find_element_by_xpath("//label[@for='experience-1']").click();
+time.sleep(2);
+### Entry Level
+browser.find_element_by_xpath("//label[@for='experience-2']").click();
+time.sleep(2);
+### Associate 
+browser.find_element_by_xpath("//label[@for='experience-3']").click();
+time.sleep(2);
+filters[2].click();
+
+
+
+# ## Easy Apply
+# filters = browser.find_elements_by_class_name('artdeco-pill');
+# filters[6].click();
+
+
+# # Quit
+# time.sleep(5);
+# file.close();
+# browser.quit();
+# print("BOT: Quit successfully.\n");
