@@ -4,14 +4,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # Initiate the browser and go to LinkedIn
-
 options = Options();
 options.add_argument("--incognito");
 
 browser  = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options);
 browser.get('https://www.linkedin.com/');
 
-# Implicitly wait for up to 5 seconds for each element
+# Implicitly wait for up to 5 seconds per element
 browser.implicitly_wait(5);
 
 # Retrieve log in info from text file
@@ -33,7 +32,7 @@ browser.find_element_by_name('session_password').send_keys(password);
 # Click Log In
 browser.find_element_by_class_name('sign-in-form__submit-button').click();
 
-# # Remember Me? -> Click Not Now
+# Remember Me? -> Click Not Now
 try:
     browser.find_element_by_xpath('//*[@id="remember-me-prompt__form-secondary"]/button').click();
 except:
@@ -66,13 +65,26 @@ search_box[3].send_keys(location);
 browser.find_element_by_class_name('jobs-search-box__submit-button').click();
 
 # Filter Search
-
-# try:
-#     browser.find_element_by_xpath('//*[@id="ember1528"]');
-# except:
-#     browser.find_element_by_class_name('peek-carousel-controls__button').click();
-
 filters = browser.find_elements_by_class_name('artdeco-pill');
+#    0    |  Jobs               //
+#    1    |  Date Posted        
+#    2    |  Experience Level   
+#    3    |  Company            //
+#    4    |  Job Type           
+#    5    |  Remote             //
+#    6    |  Easy Apply         //
+#    7    |  All Filters        //
+
+
+filters[1].click();
+time.sleep(5);
+browser.find_element_by_xpath('//*[@id="artdeco-hoverable-artdeco-gen-43"]/div[1]/div/form/fieldset/div[1]/ul/li[1]/label').click();
+time.sleep(5);
+# browser.find_element_by_xpath('//*[@id="artdeco-hoverable-artdeco-gen-43"]/div[1]/div/form/fieldset/div[2]/button[2]').click();
+filters[1].click();
+time.sleep(5);
+
+filters[6].click();
 
 
 # Quit
