@@ -77,10 +77,9 @@ filters = browser.find_elements_by_class_name('artdeco-pill');
 
 
 filters[1].click();
-time.sleep(5);
-browser.find_element_by_xpath('//*[@id="artdeco-hoverable-artdeco-gen-43"]/div[1]/div/form/fieldset/div[1]/ul/li[1]/label').click();
-time.sleep(5);
-# browser.find_element_by_xpath('//*[@id="artdeco-hoverable-artdeco-gen-43"]/div[1]/div/form/fieldset/div[2]/button[2]').click();
+time.sleep(2);
+browser.find_element_by_xpath("//label[@for='timePostedRange-r86400']").click();
+time.sleep(2);
 filters[1].click();
 time.sleep(5);
 
