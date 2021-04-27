@@ -78,33 +78,28 @@ filters[1].click();
 ### Past 24 Hours
 browser.find_element_by_xpath("//label[@for='timePostedRange-r86400']").click();
 filters[1].click();
-time.sleep(5);
+time.sleep(2);
 
 ## Experience Level
 filters = browser.find_elements_by_class_name('artdeco-pill');
-print(len(filters));
 filters[2].click();
-time.sleep(5);
 ### Internship
 browser.find_element_by_xpath("//label[@for='experience-1']").click();
-time.sleep(2);
 ### Entry Level
 browser.find_element_by_xpath("//label[@for='experience-2']").click();
-time.sleep(2);
 ### Associate 
 browser.find_element_by_xpath("//label[@for='experience-3']").click();
-time.sleep(2);
 filters[2].click();
+time.sleep(2);
 
 
+## Easy Apply
+filters = browser.find_elements_by_class_name('artdeco-pill');
+filters[6].click();
 
-# ## Easy Apply
-# filters = browser.find_elements_by_class_name('artdeco-pill');
-# filters[6].click();
 
-
-# # Quit
-# time.sleep(5);
-# file.close();
-# browser.quit();
-# print("BOT: Quit successfully.\n");
+# Quit
+time.sleep(5);
+file.close();
+browser.quit();
+print("BOT: Quit successfully.\n");
