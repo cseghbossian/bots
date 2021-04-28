@@ -85,18 +85,20 @@ filters = browser.find_elements_by_class_name('artdeco-pill');
 filters[2].click();
 ### Internship
 browser.find_element_by_xpath("//label[@for='experience-1']").click();
+time.sleep(1);
 ### Entry Level
 browser.find_element_by_xpath("//label[@for='experience-2']").click();
+time.sleep(1);
 ### Associate 
 browser.find_element_by_xpath("//label[@for='experience-3']").click();
+time.sleep(1);
 filters[2].click();
-time.sleep(2);
-
+time.sleep(1);
 
 ## Easy Apply
 filters = browser.find_elements_by_class_name('artdeco-pill');
 filters[6].click();
-
+time.sleep(2);
 
 # Quit
 time.sleep(5);
